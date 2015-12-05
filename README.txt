@@ -61,9 +61,6 @@ No delay - NOT RECOMMENDED !!! - 2.1MB/sec Max (Speed graph - deep drops down to
 ------------------------------------------------------------------------
 CPU usage on both computers never exceeded 5% during any of the transfers.....
 ------------------------------------------------------------------------
-Minor note - all measurements were made with DEBUG flag set to ON...producing thousands of debug messages.
-without any debug info being printed - script performance about 150% higher...(what was 2.0MB/sec...will go up to 3.0MB/sec...roughly calculated)
-------------------------------------------------------------------------
 
 
 how to use:
