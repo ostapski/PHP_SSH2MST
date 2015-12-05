@@ -77,3 +77,7 @@ $local_file='c:/UPLOAD_TEST_3.gro';
 $PHP_SSH2MST->uploadFile($remote_file,$local_file);
 
 echo 'SFTP Copy Time (Global): ' . $PHP_SSH2MST->last_transfer_time . ' sec (' . $PHP_SSH2MST->bytes2string($PHP_SSH2MST->last_file_size) . ' - ' . $PHP_SSH2MST->bytes2string($PHP_SSH2MST->last_transfer_speed) . "/sec...combined average speed= " . $PHP_SSH2MST->bytes2string($PHP_SSH2MST->last_combined_transfer_speed) . "/sec)\n\n";
+
+
+//Minor note ...when debug flag is set to 0 .... 
+//Upload speed is ~6mb/sec with 10 streams  :)...enjoy
