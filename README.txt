@@ -1,5 +1,5 @@
 
-PHP_SSH2MST 			- SSH2 Multi Stream Transfer class (main)
+PHP_SSH2MST 		- SSH2 Multi Stream Transfer class (main)
 PHP_SSH2MSTSBase	- Base class for transfer streams...
 PHP_SSH2MSTSUp		- Upload Stream class for single transfer...
 PHP_SSH2MSTSDown	- Download Stream class for single transfer...
@@ -8,15 +8,15 @@ PHP_SSH2MSTSDown	- Download Stream class for single transfer...
 Main purpose of this class is to allow transfer of single file over miltiple SSH2 streams to gain maximal transfer speed...
 coz using original functions of PHP ...gives shitty speeds:
 
-- copy()										- SLOW ...~350Kb/sec
-- stream_copy_to_stream()		- FAST ...~650Kb/sec (stream is set to blocking)
-- ssh2_scp_send()						- FAST ...~650Kb/sec
+- copy()			- SLOW ...~350Kb/sec
+- stream_copy_to_stream()	- FAST ...~650Kb/sec (stream is set to blocking)
+- ssh2_scp_send()		- FAST ...~650Kb/sec
 ....and most reffered to class by "stackoverlow.com" site: - please stop doing that ... you are not helping...when people asking how to fix PHP short commings !!!!!!!!!!!!)
-- Net_SFTP()->put()					- SLOW ...~320Kb/sec (phpseclib1.0.0/SFTP.php)
+- Net_SFTP()->put()		- SLOW ...~320Kb/sec (phpseclib1.0.0/SFTP.php)
 
 - This Script:
-	10 streams (sequential transfer (not used anymore))			- FAST ...~1.2Mb/sec
-	10 streams (re-ordedred transfer)												- FAST ...~1.5Mb/sec
+	10 streams (sequential transfer (not used anymore))	- FAST ...~1.2Mb/sec
+	10 streams (re-ordedred transfer)			- FAST ...~1.5Mb/sec
 	Note on speed: ...
 		all speeds were measured between dedicated server on Leaseweb in Germany (Frankfurt) and Edis VPS (Switzerland) (2 core ...max load at any time 5% CPU...so screw anyone who would say that SSH is slow coz of extensive CPU usage ......they just slowing it down coz they need the time for DPI)
 		During the day - speed remained at 1.2 download and 2.5 upload ...(heavily clamped down...)
@@ -34,16 +34,16 @@ Here are some measured values for uploading a single file (44Mb .zip):
 ------------------------------------------------------------------------
 System setup:
 	- Source:
-				Host:			Leaseweb (DE) Dedicated server located in Frankfurt
-				OS:				Windows Server 2008 Server R2
+				Host:		Leaseweb (DE) Dedicated server located in Frankfurt
+				OS:		Windows Server 2008 Server R2
 				Memory:		16GB
-				CPU:			Intel Xeon E3 1220 @ 3.10Mhz
+				CPU:		Intel Xeon E3 1220 @ 3.10Mhz
 				Network:	1Gbit (200mbit guaranteed badnwidth)
 	- Destination:
-				Host:			Edis (CH) OVZ server located in Zurich
-				OS:				Linux Debian 7 (wheezy)
+				Host:		Edis (CH) OVZ server located in Zurich
+				OS:		Linux Debian 7 (wheezy)
 				Memory:		2Gb
-				CPU:			Intel Xeon E5-2630 v2 @ 2.60GHz (2 cores available)
+				CPU:		Intel Xeon E5-2630 v2 @ 2.60GHz (2 cores available)
 				Network:	1Gbit (unlimited)
 	- Script config:
 				Streams:	10
@@ -51,13 +51,13 @@ System setup:
 ------------------------------------------------------------------------
 All Tests performed after office hours (after 20:00 European time ...when total load on network subsided)
 ------------------------------------------------------------------------
-5ms				=> 960KB/sec
-4ms				=> 1.1MB/sec (speed graph - straight line)
-3ms				=> 1.2MB/sec (speed graph - straight line)
-2ms				=> 1.5MB/sec (speed graph - straight line...but script is almost uncontrollable :)...CTRL/C doestnt work as easy as expected )
-1ms				=> 1.8MB/sec (speed graph - straight line...beware of warewolf ..i mean not being able to stop the script)
-0.5ms			=> 2.0MB/sec (speed graph - jaggy eddged line......stopping the script is not possible now over RemoteDesktop connection)
-0.1ms			=> 2.0MB/sec Max (Speed graph - deep drops down to 1.8 average keeps at 2.0MB/sec....)
+5ms		=> 960KB/sec
+4ms		=> 1.1MB/sec (speed graph - straight line)
+3ms		=> 1.2MB/sec (speed graph - straight line)
+2ms		=> 1.5MB/sec (speed graph - straight line...but script is almost uncontrollable :)...CTRL/C doestnt work as easy as expected )
+1ms		=> 1.8MB/sec (speed graph - straight line...beware of warewolf ..i mean not being able to stop the script)
+0.5ms		> 2.0MB/sec (speed graph - jaggy eddged line......stopping the script is not possible now over RemoteDesktop connection)
+0.1ms		=> 2.0MB/sec Max (Speed graph - deep drops down to 1.8 average keeps at 2.0MB/sec....)
 No delay - NOT RECOMMENDED !!! - 2.1MB/sec Max (Speed graph - deep drops down to 1.6Mb/sec.... average at 1.9MB/sec)
 ------------------------------------------------------------------------
 CPU usage on both computers never exceeded 5% during any of the transfers.....
