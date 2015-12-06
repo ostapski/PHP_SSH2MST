@@ -1,6 +1,5 @@
 <?
 //#######################################################################################################################################################################
-//a finger up the ars to one who said that script should be few lines long !!!
 //#######################################################################################################################################################################
 //##		[Author]				; Alexandre Ostanine (ostap333@hotmail.com)
 //##		[Created]	  		; 23/11/2015
@@ -1052,7 +1051,6 @@ class PHP_SSH2MSTSUp extends PHP_SSH2MSTSBase
 
 			if ($this->handle_stream_local= fopen($local_file, 'r'))
 			{
-				//fseek($this->handle_stream_local,$chunk_offset); 	//move local file pointer to the chunk offset...
 				//the only way so far to open none blocking stream to remote server for writing ....fopen always return blocking stream witch will ignore any attempts to make it unblocking....
 				if ($this->handle_stream_remote=ssh2_exec($this->connection_data->connection_handle, 'cat > ' . $remote_file))
 				{
