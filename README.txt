@@ -13,37 +13,17 @@ coz using original functions of PHP ...gives shitty speeds:
 ....and most reffered to class by "stackoverlow.com" site: - please stop doing that ... you are not helping...when people asking how to fix PHP short commings !!!!!!!!!!!!)
 - Net_SFTP()->put()		- SLOW ...~320Kb/sec (phpseclib1.0.0/SFTP.php)
 
-- This Script:
-	10 streams (sequential transfer (not used anymore))	- FAST ...~1.2Mb/sec
-	10 streams (re-ordedred transfer)			- FAST ...~1.5Mb/sec
-	Note on speed: ...
-		all speeds were measured between dedicated server on Leaseweb in Germany (Frankfurt) and Edis VPS (Switzerland) (2 core ...max load at any time 5% CPU...so screw anyone who would say that SSH is slow coz of extensive CPU usage ......they just slowing it down coz they need the time for DPI)
-		During the day - speed remained at 1.2 download and 2.5 upload ...(heavily clamped down...)
-		After office hours (17h-18h) ...speed increased up to 2MB down and 3.5Mb up ...
-		Any request to clarify situation at Leaseweb - gave no results..
-
-		DO NOT HOST YOUR SERVERS IN GERMANY ...!!!!!!
-
 Basically what this class does - it uses none blocking SSH2 streams for transfer
 with some little hacks to allow the completion check to complement missing PHP functionality.
 Class is capable sending single file over multiple streams ....and re-use established connections for consequent multi-file transfers
-
 
 Here are some measured values for uploading a single file (44Mb .zip):
 ------------------------------------------------------------------------
 System setup:
 	- Source:
-				Host:		Leaseweb (DE) Dedicated server located in Frankfurt
-				OS:		Windows Server 2008 Server R2
-				Memory:		16GB
-				CPU:		Intel Xeon E3 1220 @ 3.10Mhz
-				Network:	1Gbit (200mbit guaranteed badnwidth)
+				Host:		Leaseweb (DE) Dedicated server located in Frankfurt,Windows Server 2008 Server R2,Memory:	16GB CPU:Intel Xeon E3 1220 @ 3.10Mhz Network:	1Gbit (200mbit guaranteed badnwidth)
 	- Destination:
-				Host:		Edis (CH) OVZ server located in Zurich
-				OS:		Linux Debian 7 (wheezy)
-				Memory:		2Gb
-				CPU:		Intel Xeon E5-2630 v2 @ 2.60GHz (2 cores available)
-				Network:	1Gbit (unlimited)
+				Host:		Edis (CH) OVZ server located in Zurich,	Linux Debian 7 (wheezy) Memory:	2Gb,CPU: Intel Xeon E5-2630 v2 @ 2.60GHz (2 cores available), Network:	1Gbit (unlimited)
 	- Script config:
 				Streams:	10
 				Buffer: 	8KB (see notes for "PHP_SSH2MST_MAX_STREAM_BLOCK_SIZE_UPLOAD" constant)
@@ -75,5 +55,5 @@ $PHP_SSH2MST->uploadFile($remote_file,$local_file);
 echo 'SFTP Copy Time (Global): ' . $PHP_SSH2MST->last_transfer_time . ' sec (' . $PHP_SSH2MST->bytes2string($PHP_SSH2MST->last_file_size) . ' - ' . $PHP_SSH2MST->bytes2string($PHP_SSH2MST->last_transfer_speed) . "/sec...combined average speed= " . $PHP_SSH2MST->bytes2string($PHP_SSH2MST->last_combined_transfer_speed) . "/sec)\n\n";
 
 
-//Minor note ...when debug flag is set to 0 .... 
+//Minor note ...when debug flag is set to 0 ....
 //Upload speed is ~6mb/sec with 10 streams  :)...enjoy
